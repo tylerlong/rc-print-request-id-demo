@@ -8,7 +8,7 @@ const sdk = new SDK({
 
 const client = sdk.client();
 client.on(client.events.requestSuccess, (apiResponse) => {
-  console.log(apiResponse.headers.get('rcrequestid'));
+  console.log(apiResponse.headers.get('rcrequestid'), apiResponse.url);
 });
 
 const platform = sdk.platform();
@@ -17,6 +17,5 @@ platform
     jwt: process.env.RINGCENTRAL_JWT_TOKEN,
   })
   .then(() => {
-    console.log('Logged in');
     platform.get('/restapi/v1.0/account/~/extension/~');
   });
